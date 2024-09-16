@@ -1,36 +1,52 @@
-# Escalonador-de-processos---Java
-Escalonador de Processos em Java desenvolvido por Renato Silveira e Ronaldo Alves na disciplina de Sistemas Operacionais 2
+# Process Scheduler Simulator
 
-O objetivo deste projeto é a criação de um simulador de algoritmos de escalonamento
-de processos. O programa deverá ser desenvolvido em Java e deverá ser capaz de
-exibir graficamente a simulação de execução dos algoritmos de escalonamento de
-processos em um único CPU. Além disso, o sistema deverá ser capaz de computar o
-tempo de espera médio e o throughput médio dos algoritmos.
+This project, developed by Renato Silveira and Ronaldo Alves for the Computer Engineering course at the Instituto Federal de Educação, Ciência e Tecnologia do Sul de Minas, is a process scheduler simulator implemented in Java. The objective of the project is to create a simulation that visualizes the execution of various process scheduling algorithms on a single CPU. The system computes both the average waiting time and the average throughput for the algorithms.
 
-Para tal, deverão ser utilizadas Java Threads que irão auxiliar no funcionamento do
-sistema. Deverão ser implementadas, no mínimo, as seguintes tarefas para serem
-utilizadas com Threads:
+## Project Overview
 
- Tarefa Produtora: cria um objeto Processo e o insere em uma fila de processos.
- Tarefa Consumidora: retira um Processo da fila e o aloca na CPU.
- Tarefa Contadora: simula o clock da CPU, ditando o tempo decorrido de
-execução da CPU.
+The simulator uses Java Threads to manage the simulation of process scheduling. The following tasks are implemented to aid the functioning of the system:
 
-O maior desafio deste trabalho está na implementação do algoritmo de escalonamento
-de processos, bem como a garantia de sincronia entre todos os elementos paralelizados
-do código (produção/consumo de processos, clock da CPU, escalonamento e exibição
-do funcionamento). Os alunos deverão elaborar estratégias inteligentes para o correto
-funcionamento do projeto.
+- **Producer Task**: Creates a `Process` object and inserts it into a process queue.
+- **Consumer Task**: Removes a `Process` from the queue and allocates it to the CPU.
+- **Clock Task**: Simulates the CPU clock, managing the elapsed execution time of the CPU.
 
-Deverão ser implementados 3 algoritmos de escalonamento, sendo eles:
- First come, first served (FCFS)
- Round Robin (RR): definição do quantum é questão de projeto. Os alunos
-deverão tentar defini-lo com base na execução e resultado das métricas de
-desempenho.
- Um entre: Shortest Job First (SJF), Shortest Remaining Time Next (SRTN) e
-Múltiplas Filas.
+### Scheduling Algorithms Implemented
 
-Finalmente, os alunos deverão entregar um relatório curto (2 a 4 páginas) onde deverão
-descrever brevemente aspectos importantes de implementação, os algoritmos
-implementados e um comparativo entre eles de acordo com o tempo de espera médio
-e o throughput médio.
+1. **First Come, First Served (FCFS)**: Processes are scheduled in the order they arrive.
+2. **Round Robin (RR)**: Processes are assigned a fixed time slice (quantum) in a cyclic order. The quantum is adjustable based on performance metrics.
+3. **Additional Algorithm**:
+   - **Shortest Job First (SJF)**
+   - **Shortest Remaining Time Next (SRTN)**
+   - **Multiple Queues**
+
+## Key Features
+
+- **Graphical Simulation**: Visual representation of the process scheduling.
+- **Performance Metrics**: Calculation of average waiting time and throughput for each scheduling algorithm.
+- **Concurrency Handling**: Utilizes Java Threads to manage task synchronization and ensure correct operation of the scheduling system.
+
+## Implementation Details
+
+The project includes a graphical user interface to visualize the scheduling process. Threads are used to handle:
+- The creation and management of process objects.
+- The scheduling and execution of processes.
+- The simulation of CPU time through a clock task.
+
+### Synchronization and Concurrency
+
+Proper synchronization is essential for the correct functioning of the simulation. Strategies are implemented to ensure that:
+- Processes are added and removed from the queue correctly.
+- The CPU scheduling is managed without conflicts.
+- The clock task accurately reflects the passage of time.
+
+## Report
+
+A short report (2 to 4 pages) will be provided, detailing:
+- Key aspects of the implementation.
+- Descriptions of the scheduling algorithms.
+- Comparative analysis of the algorithms based on average waiting time and average throughput.
+
+## Notes
+
+- The choice of quantum for the Round Robin algorithm is a design decision that should be based on the performance results observed during execution.
+- The implementation of the additional scheduling algorithm will be one among SJF, SRTN, or Multiple Queues.
